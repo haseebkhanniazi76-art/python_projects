@@ -1,5 +1,5 @@
 import pandas as pd
-df=pd.read_csv("ingredents data.csv")
+df=pd.read_csv("morning_stock.csv")
 class Ingredient:
     def __init__(self, name, quantity):
         self.name = name
