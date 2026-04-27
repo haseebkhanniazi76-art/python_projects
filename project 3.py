@@ -35,6 +35,6 @@ adopted_data = pd.DataFrame([{
 }])
 
 
-adopted_data.to_csv("adopted_data.csv")
+adopted_data.to_csv("successful_adoptations.csv",mode="a".index=false)
 print("Current Dogs Available")
 print(df)
