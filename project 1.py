@@ -1,7 +1,7 @@
 import pandas as pd
 class Student:
-    def __init__(self, name, math_score, science_score):
-        self.name = name
+    def __init__(self, student_name, math_score, science_score):
+        self.student_name = name
         self.math_score = math_score
         self.science_score = science_score
         self.status = None
@@ -21,7 +21,7 @@ student_objects = []
 
 for index, row in df_cleaned.iterrows():
     student_obj = Student(
-        name=row['Student_Name'],
+        student_name=row['Student_Name'],
         math_score=row['Math_Score'],
         science_score=row['Science_Score']
     )
