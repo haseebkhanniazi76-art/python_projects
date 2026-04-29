@@ -1,48 +1,29 @@
-import pandas as pd
 class Student:
-    def __init__(self, student_name, math_score, science_score):
-        self.student_name = name
+    def __init__(self, student_name,math_score, science_score):
+        self.student_name = student_name
         self.math_score = math_score
         self.science_score = science_score
-        self.status = None
-
     def check_status(self):
-        average = (self.math_score + self.science_score) / 2
-
-        # Pass/Fail logic
-        if average >= 50:
+        average_score = (self.math_score + self.science_score) / 2
+        if average_score >= 50:
             self.status = "Pass"
         else:
             self.status = "Fail"
-df=pd.read_csv("raw_grades.csv")
-df_cleaned = df.fillna(0)
-
-student_objects = []
-
-for index, row in df_cleaned.iterrows():
-    student_obj = Student(
-        student_name=row['Student_Name'],
-        math_score=row['Math_Score'],
-        science_score=row['Science_Score']
-    )
-
-    student_obj.check_status()
-
-    student_objects.append(student_obj)
-
-
-final_list = []
-for s in student_objects:
-    final_list.append({
-        "Name": s.name,
-        "Math": s.math_score,
-        "Science": s.science_score,
-        "Result": s.status
-    })
-
-final_report = pd.DataFrame(final_list)
-
-final_report['School_Year'] = "2023-2024"
-
-print("final grading report")
-print(final_report)
+import pandas as pd
+df = pd.read_csv("raw_grades.csv")
+y = df.fillna(0)
+new_student = []
+for _, row in y.iterrows():
+    s1 = Student(row["student_name"],row["math_score"],row["science_score"])
+    s1.check_status()
+    new_student.append(s1)
+processed_data_dict = {"student_name": [s1.student_name for s1 in new_student],
+                       "math_score": [s1.math_score for s1 in new_student],
+"science_score": [s1.science_score for s1 in new_student],}
+df = pd.DataFrame(processed_data_dict)
+df["School_Year"]="2023-2024"
+class NewStudent(Student):
+    def add_status(self):
+        df["Status"] = self.status
+        s1.add_status()
+print(df)
